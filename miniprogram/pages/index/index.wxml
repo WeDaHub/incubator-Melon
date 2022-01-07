@@ -1,0 +1,146 @@
+<view class="container">
+  <!-- 开始游戏（登录授权）模块 -->
+  <view class="start" wx:if="{{isLoading || isShowAuth}}">
+    <image class="start-logo" src="../../images/logo.png"></image>
+    <view class="start-load" wx:if="{{isLoading}}">
+      <view></view>
+      <view></view>
+      <view></view>
+      <view></view>
+    </view>
+    <button wx:else class="start-btn" bindtap="getUserProfile">开始游戏</button>
+  </view>
+  <!-- 游戏界面 -->
+  <view class="head">
+    <view class="head-top">
+      <image class="head-avatar" src="{{avatarUrl}}" mode="cover"></image>
+      <view class="head-content">
+        <view class="head-nick">{{nickName}}</view>
+        <view class="head-best">历史最高分: {{bestScore}}</view>
+      </view>
+      <view class="head-score">
+        <view class="head-score-tips">当前得分</view>
+        <view class="head-score-number">{{nowScore}}</view>
+      </view>
+    </view>
+    <view class="head-bottom">
+      <view class="head-btn {{mode == 'melon' ? 'head-btn-chigua' : ''}}" bindtap="switchModeType">
+        {{mode == 'melon' ? '吃瓜' : '经典'}}
+      </view>
+      <view class="head-btn" bindtap="initGame">重置</view>
+      <view class="head-icon" bindtap="switchMusic">
+        <image wx:if="{{!isPlayMusic}}" src="../../images/icons/volume-on.png" mode="cover"></image>
+        <image wx:else src="../../images/icons/volume-off.png" mode="cover"></image>
+      </view>
+      <view class="head-icon" bindtap="showRankDia">
+        <image src="../../images/icons/trophy.png" mode="cover"></image>
+      </view>
+      <view class="head-icon" bindtap="showRule">
+        <image src="../../images/icons/question.png" mode="cover"></image>
+      </view>
+    </view>
+  </view>
+  <view class="game">
+    <!-- 矩阵 -->
+    <view bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+      <view class="row" wx:for="{{num}}" wx:for-item="row" wx:key="row.key">
+        <view class="cell" wx:for="{{row}}" wx:for-item="cell" wx:key="cell.key">
+          <view class="cell-con cell-con-{{cell}} cell-melon {{cell ? '': 'grey'}}" wx:if="{{mode === 'melon'}}">
+            <image src="{{imgMap[cell]}}" />
+          </view>
+          <view class="cell-con cell-con-{{cell}}" wx:else>{{cell}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- game over -->
+    <view class="game-over" hidden="{{!over}}">
+      <view class="game-over-score">历史最高分：{{bestScore}}</view>
+      <view class="game-over-score">本次成绩：{{nowScore}}</view>
+      <view class="game-over-tips">{{endMsg}}</view>
+    </view>
+
+    <!-- 游戏提示文案 -->
+    <view wx:if="{{mode === 'melon'}}" class="game-tips">Tips：滑动合并相同水果，得到西瓜<image class="game-tips-melon" src="{{imgMap['2048']}}"></image>获胜！</view>
+    <view wx:else class="game-tips">Tips：滑动合并相同方块，得到 2048 获胜！</view>
+  </view>
+  <!-- 排行榜 -->
+  <view class="dialog" style="display: {{isShowRank ? 'block' : 'none'}};">
+    <view class="dialog-content">
+      <view class="dialog-title">排行榜</view>
+      <view class="rank">
+        <view class="rank-item" wx:for="{{rankList}}" wx:for-item="user" wx:key="user.nickName">
+          <view class="rank-serial">
+            <image mode="aspectFit" src="{{user.rankPic}}"></image>
+            <view>{{index + 1}}</view>
+          </view>
+          <image class="rank-avatar" src="{{user.avatarUrl || '../../images/logo.png'}}"></image>
+          <view class="rank-nick">{{user.nick || '游客'}}</view>
+          <view class="rank-score">{{user.bestScore || '0'}}分</view>
+        </view>
+      </view>
+      <view class="rank-tips">
+        当前共有
+        <text>{{totalUser ? totalUser : 'x'}}</text>
+        人参与
+      </view>
+      <view class="dialog-close" bindtap="closeRankDia">
+        <image src="../../images/icons/close.png"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 规则 -->
+  <view class="dialog" style="display: {{isShowRule ? 'block' : 'none'}};">
+    <view class="dialog-content">
+      <view class="dialog-title">规则说明</view>
+      <view class="rule">
+        <view class="rule-title">一、简介</view>
+        <view class="rule-desc">
+          【我要吃瓜】游戏玩法基于①经典2048、②合成大西瓜两款小游戏，可以在【吃瓜】/【经典】两个模式中任意切换，吃瓜模式下合成大西瓜
+          <image class="rule-melon-img" src="{{imgMap['2048']}}"></image>
+          则通关成功。
+        </view>
+        <view class="rule-title">二、吃瓜积分规则</view>
+        <view class="rule-item">
+          <image src="{{imgMap['2']}}"></image>
+          <view>2分</view>
+          <image src="{{imgMap['4']}}"></image>
+          <view>4分</view>
+        </view>
+        <view class="rule-item">
+          <image src="{{imgMap['8']}}"></image>
+          <view>8分</view>
+          <image src="{{imgMap['16']}}"></image>
+          <view>16分</view>
+        </view>
+        <view class="rule-item">
+          <image src="{{imgMap['32']}}"></image>
+          <view>32分</view>
+          <image src="{{imgMap['64']}}"></image>
+          <view>64分</view>
+        </view>
+        <view class="rule-item">
+          <image src="{{imgMap['128']}}"></image>
+          <view>128分</view>
+          <image src="{{imgMap['256']}}"></image>
+          <view>256分</view>
+        </view>
+        <view class="rule-item">
+          <image src="{{imgMap['512']}}"></image>
+          <view>512分</view>
+          <image src="{{imgMap['1024']}}"></image>
+          <view>1024分</view>
+        </view>
+        <view class="rule-item rule-item-single1">
+          <image src="{{imgMap['2048']}}"></image>
+          <view>2048分</view>
+          <image></image>
+          <view></view>
+        </view>
+      </view>
+      <view class="rule-spacing"></view>
+      <view class="dialog-close" bindtap="closeRule">
+        <image src="../../images/icons/close.png"></image>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundColor": "#faf8ee",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#faf8ee",
+    "navigationBarTitleText": "我要吃瓜",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

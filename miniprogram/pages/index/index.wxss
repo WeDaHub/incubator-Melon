@@ -1,0 +1,437 @@
+.container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+  color: #776e65;
+  background-color: #faf8ee;
+}
+/* =========================== 头部 ====================  */
+.head {
+  position: absolute;
+  top: 5vh;
+  width: 93vw;
+  text-align: center;
+}
+.head-top {
+  height: 60px;
+  display: flex;
+}
+.head-avatar {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #bbada0;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+.head-content {
+  flex: 1;
+  padding: 0 10px;
+  font-size: 16px;
+  text-align: left;
+  line-height: 30px;
+  overflow: hidden;
+}
+.head-nick {
+  height: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.head-best {
+  font-weight: bold;
+}
+.head-score {
+  color: #fff;
+  width: 100px;
+  height: 48px;
+  padding: 6px 0;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 5px;
+  background-color: #bbada0;
+}
+.head-score-tips {
+  opacity: 0.7;
+}
+.head-score-number {
+  font-weight: bold;
+}
+.head-bottom {
+  display: flex;
+  padding-top: 20px;
+  justify-content: space-between;
+}
+.head-btn {
+  font-size: 20px;
+  background-color: #bbada0;
+  color: #fff;
+  border-radius: 5px;
+  width: 80px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+}
+.head-btn-chigua {
+  background-color: #e6c543;
+}
+.head-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #bbada0;
+}
+.head-icon image {
+  width: 100%;
+  height: 100%;
+}
+/* =========================== game ====================  */
+.game {
+  margin-top: 15vh;
+  position: absolute;
+  padding-top: 5vw; 
+  padding-left: 1vw;
+  background: #bbada0;
+  border-radius: 6px;
+  width: 93vw;
+  height: 93vw;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;/* 禁用系统默认菜单 */
+  -ms-touch-callout: none;
+  -webkit-user-select: none;/* css控制文字不能被选中 */
+  -moz-user-select: none;
+  -ms-user-select: none;/* 当触控事件发生在元素上时，不进行任何操作 */
+  -ms-touch-action: none;
+  touch-action: none;
+}
+.cell {
+  width: 19vw;
+  height: 19vw; 
+  margin-left: 3vw;
+  margin-bottom: 3vw;
+  float: left;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background: rgba(238, 228, 218, 0.35);
+  overflow: hidden;
+}
+.cell-con { 
+  width: 19vw;
+  height: 19vw; 
+  line-height: 19vw;
+  position: absolute;
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+}  
+.cell-con image {
+  width:100%;
+  height: 100%;
+}
+.cell-con-2 { background: #eee4da; }
+.cell-con-4 { background: #ede0c8; }
+.cell-con-8 {
+  color: #f9f6f2;
+  background: #f2b179;
+}
+.cell-con-16 {
+  color: #f9f6f2;
+  background: #f59563;
+}
+.cell-con-32 {
+  color: #f9f6f2;
+  background: #f67c5f;
+}
+.cell-con-64 {
+  color: #f9f6f2;
+  background: #f65e3b;
+}
+.cell-con-128 {
+  color: #f9f6f2;
+  background: #edcf72;
+  font-size: 30px;
+}
+.cell-con-256 {
+  color: #f9f6f2;
+  font-size: 30px;
+  background: #edcc61;
+}
+.cell-con-512 {
+  color: #f9f6f2;
+  font-size: 30px;
+  background: #edc850;
+}
+.cell-con-1024 {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #edc53f;
+}
+.cell-con-2048 {
+  color: #f9f6f2;
+  font-size: 25px;
+  background: #edc22e;
+}
+.cell-con.cell-melon{
+  background: #eee4da; 
+}
+
+.cell-con.cell-melon.grey{
+  background: rgba(238, 228, 218, 0.35);
+}
+
+.game-over {
+  position: absolute;
+  z-index: 3;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  padding-top: 20vw;
+  box-sizing: border-box;
+}
+.game-over-score {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.game-over-tips {
+  font-weight: bold;
+  font-size: 30px;
+}
+.game-tips {
+  position: absolute;
+  left: 0;
+  bottom: -40px;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+}
+.game-tips-melon{
+  width: 20px;
+  height: 20px;
+  vertical-align: bottom;
+}
+/* =========================== 登录 ====================  */
+.start {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  box-sizing: border-box;
+  padding-top: 60px;
+  background-color: #faf8ee;
+}
+.start-logo {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  display: block;
+}
+.start-load {
+  display: flex;
+  text-align: center;
+  margin-top: 20px;
+  justify-content: center;
+}
+.start-load view {
+  width: 6px;
+  height: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+.start-load view:nth-child(1) {
+  animation: loadingAni 2s infinite;
+}
+.start-load view:nth-child(2) {
+  animation: loadingAni 2s infinite 0.5s;
+}
+.start-load view:nth-child(3) {
+  animation: loadingAni 2s infinite 1s;
+}
+.start-load view:nth-child(4) {
+  animation: loadingAni 2s infinite 1.5s;
+}
+.start-btn {
+  width: 140px !important;
+  font-size: 20px;
+  background-color: #e19168;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+  margin-top: 240px;
+  padding: 0;
+}
+@keyframes loadingAni {
+  0% {
+    background-color: #ccc;
+  }
+
+  25% {
+    background-color: #ccc;
+  }
+
+  26% {
+    background-color: transparent;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+/* =========================== 排行榜 ====================  */
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.dialog-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  padding: 0 20px;
+  margin-top: -36px;
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 10px;
+  background-color: #faf8ee;
+}
+.dialog-close {
+  position: absolute;
+  left: 50%;
+  bottom: -56px;
+  width: 36px;
+  height: 36px;
+  transform: translateX(-50%);
+}
+.dialog-close image {
+  width: 100%;
+  height: 100%;
+}
+.dialog-title {
+  height: 60px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 60px;
+  font-weight: bold;
+}
+.rank {
+  overflow: auto;
+  height: 340px;
+}
+.rank-item {
+  height: 30px;
+  display: flex;
+  padding: 10px 0;
+  line-height: 30px;
+  border-bottom: 1px solid #ebedf0;
+  justify-content: space-between;
+}
+.rank-item:first-child {
+  padding-top: 0;
+}
+.rank-item:last-child {
+  border-bottom: none;
+}
+.rank-serial {
+  position: relative;
+  color: #fff;
+  width: 20px;
+  height: 30px;
+  overflow: hidden;
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 28px;
+}
+.rank-serial image {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 20px;
+  display: block;
+  transform: translateY(-50%);
+}
+.rank-serial view {
+  position: relative;
+}
+.rank-avatar {
+  width: 30px;
+  height: 30px;
+  display: block;
+  border-radius: 100%;
+}
+.rank-nick {
+  width: 100px;
+  opacity: 0.7;
+  font-size: 16px;
+}
+.rank-score {
+  font-weight: bold;
+}
+.rank-tips {
+  height: 60px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 60px;
+}
+.rank-tips text {
+  padding: 0 6px;
+  font-weight: bold;
+}
+.rule {
+  height: 370px;
+  overflow: auto;
+}
+.rule-title {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+.rule-desc {
+  line-height: 24px;
+  padding-bottom: 10px;
+}
+.rule-item {
+  height: 40px;
+  display: flex;
+  padding-bottom: 20px;
+  justify-content: space-evenly;
+}
+.rule-item image {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.rule-item view {
+  width: 60px;
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
+}
+.rule-spacing {
+  height: 30px;
+}
+.rule-melon-img{
+  width: 24px;
+  height: 24px;
+  vertical-align: bottom;
+}

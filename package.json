@@ -1,0 +1,23 @@
+{
+  "name": "melon",
+  "version": "1.0.0",
+  "description": "melon game",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint miniprogram/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:WeDaHub/App-CloudBase-Melon.git"
+  },
+  "keywords": [
+    "2048",
+    "game",
+    "melon"
+  ],
+  "author": "zhaodanchun",
+  "license": "ISC",
+  "devDependencies": {
+    "@tencent/eslint-config-tencent": "^0.13.1"
+  }
+}
